@@ -146,11 +146,15 @@ namespace WebAppInsurance.Controllers
                 return Problem("Entity set 'ApplicationDbContext.Insured'  is null.");
             }
             var insured = await _context.Insured.FindAsync(id);
+            var MyInsurancesAll = _context.Insurance.Where(p => p.InsuredId == id).ToList();
             if (insured != null)
             {
+                _context.Insurance.RemoveRange(MyInsurancesAll);
                 _context.Insured.Remove(insured);
+                
+
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

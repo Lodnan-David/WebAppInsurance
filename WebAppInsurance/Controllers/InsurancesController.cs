@@ -155,6 +155,7 @@ namespace WebAppInsurance.Controllers
             if (insurance != null)
             {
                 _context.Insurance.Remove(insurance);
+                
             }
             
             await _context.SaveChangesAsync();
