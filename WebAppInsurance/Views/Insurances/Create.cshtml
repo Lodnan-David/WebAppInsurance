@@ -1,0 +1,99 @@
+﻿@model WebAppInsurance.Models.Insurance
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Insurance</h4>
+<form asp-action="Create" class="form" id="createForm">
+    <div class="novy-container-hlavni">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table-responsive">
+                    <tr>
+                        <td>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="InsuranceName" class="form-label visually-hidden"></label>
+                                <label for="insuranceName">Název pojištění</label>
+                                <select asp-for="InsuranceName" class="form-control" id="insuranceName">
+                                    <option value="Option1">Option 1</option>
+                                    <option value="Option2">Option 2</option>
+                                    <option value="Option3">Option 3</option>
+                                    <option value="Option4">Option 4</option>
+                                    <option value="Option5">Option 5</option>
+                                </select>
+                                <span asp-validation-for="InsuranceName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="InsuranceSubject" class="form-label visually-hidden"></label>
+                                <label for="insuranceSubject">Předmět pojištění</label>
+                                <select asp-for="InsuranceSubject" class="form-control" id="insuranceSubject">
+                                    <option value="Option1">Option 1</option>
+                                    <option value="Option2">Option 2</option>
+                                    <option value="Option3">Option 3</option>
+                                    <option value="Option4">Option 4</option>
+                                    <option value="Option5">Option 5</option>
+                                </select>
+                                <span asp-validation-for="InsuranceSubject" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Amount" class="form-label visually-hidden"></label>
+                                <label for="amount">Pojištovací částka</label>
+                                <input asp-for="Amount" class="form-control" id="amount" />
+                                <span asp-validation-for="Amount" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table-responsive">
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="StartDate" class="form-label visually-hidden"></label>
+                                <label for="startDate">Začátek pojištění</label>
+                                <input asp-for="StartDate" class="form-control" id="startDate" />
+                                <span asp-validation-for="StartDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="EndDate" class="form-label visually-hidden"></label>
+                                <label for="endDate">Konec pojištění</label>
+                                <input asp-for="EndDate" class="form-control" id="endDate" />
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="InsuredId" class="form-label visually-hidden"></label>
+                                <label for="insuredId">Pojištěná osoba</label>
+                                <select asp-for="InsuredId" class="form-control" id="insuredId" asp-items="ViewBag.InsuredId"></select>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </div>
+        </div>
+        <div class="novy-container d-flex align-items-center justify-content-center">
+            <div class="form-group text-center mt-1">
+                <button type="submit" form="createForm" class="btn btn-primary btn-block">Vytvořit</button>
+                <button type="button" onclick="location.href='@Url.Action("Index")'" class="btn btn-secondary btn-block">Zpět</button>
+            </div>
+        </div>
+        
+
+    </div>
+
+</form>
+
+    
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

@@ -1,0 +1,116 @@
+﻿@model WebAppInsurance.Models.Insured
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form asp-action="Create" class="form" id="createForm">
+    <div class="novy-container-hlavni">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table-responsive">
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            <h3>Osobní údaje</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="FirstName" class="form-label visually-hidden"></label>
+                                <label for="custom">Jméno</label>
+                                <input asp-for="FirstName" class="form-control" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="LastName" class="form-label visually-hidden"></label>
+                                <label for="custom">Příjmení</label>
+                                <input asp-for="LastName" class="form-control" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Email" class="visually-hidden"></label>
+                                <label for="custom">Emailová adresa</label>
+                                <input asp-for="Email" class="form-control" data-val="true" data-val-regex="Prosím, zadejte platnou emailovou adresu." data-val-regex-pattern="[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Phone" class="form-label visually-hidden"></label>
+                                <label for="custom">Mobilní číslo</label>
+                                <input asp-for="Phone" id="Phone-input" class="form-control" inputmode="tel" pattern="(\+)?\d+" title="Prosím, zadejte platné Phonení číslo." />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table-responsive">
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            <h3>Adresa</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="Street" class="form-label visually-hidden"></label>
+                                <label for="custom">Ulice</label>
+                                <input asp-for="Street" class="form-control" />
+                                <span asp-validation-for="Street" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="HouseNumber" class="form-label visually-hidden"></label>
+                                <label for="custom">Číslo popisné</label>
+                                <input asp-for="HouseNumber" class="form-control" />
+                                <span asp-validation-for="HouseNumber" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="City" class="form-label visually-hidden"></label>
+                                <label for="custom">Město</label>
+                                <input asp-for="City" class="form-control" />
+                                <span asp-validation-for="City" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ZIPCode" class="form-label visually-hidden"></label>
+                                <label for="custom">PSČ</label>
+                                <input asp-for="ZIPCode" class="form-control" inputmode="numeric" pattern="[0-9]*" oninput="restrictInputToNumbers(this)" />
+                                <span asp-validation-for="ZIPCode" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="novy-container d-flex align-items-center justify-content-center">
+        <div class="form-group text-center mt-1">
+            <button type="submit" form="createForm" class="btn btn-primary btn-block">Vytvořit</button>
+            <button type="button" onclick="location.href='@Url.Action("Index")'" class="btn btn-secondary btn-block">Zpět</button>
+        </div>
+    </div>
+</form>
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function restrictInputToNumbers(input) {
+            input.value = input.value.replace(/\D/g, '');
+        }
+        // Validace pole vstupu pro mobilní číslo
+        const PhoneInput = document.getElementById('Phone-input');
+        PhoneInput.addEventListener('input', function (event) {
+            const value = event.target.value;
+            const isValid = /^\+?[0-9]+$/.test(value);
+            event.target.setCustomValidity(isValid ? '' : 'Prosím, zadejte platné mobilní číslo.');
+        });
+
+    </script>
+}

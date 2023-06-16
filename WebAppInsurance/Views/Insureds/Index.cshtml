@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebAppInsurance.Models.Insured>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Seznam pojištěných</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Jméno</th>
+                            <th>Adresa</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a class="custom-button-record" asp-action="Details" asp-route-id="@item.Id">
+                                        @Html.DisplayFor(modelItem => item.FirstName)
+                                        @Html.DisplayFor(modelItem => item.LastName)
+                                    </a>
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.Street), @Html.DisplayFor(modelItem => item.HouseNumber), @Html.DisplayFor(modelItem => item.City), @Html.DisplayFor(modelItem => item.ZIPCode)</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+
+                                        <a class="custom-button-edit btn-info btn-md" asp-action="Edit" asp-route-id="@item.Id">Editovat</a>
+
+                                        <a class="custom-button-delete btn-danger btn-md" asp-action="Delete" asp-route-id="@item.Id">Smazat</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="novy-container d-flex align-items-center justify-content-center">
+    <div class="form-group text-center mt-1">
+        <a asp-action="Create" class="btn btn-primary btn-block">Vytvořit</a>
+    </div>
+</div>
