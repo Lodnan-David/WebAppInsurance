@@ -1,58 +1,144 @@
-/*Stylizace tabulek create */
+/* Stylizace tabulek create */
 .new-container-main {
     border: 2px solid black;
     border-radius: 10px;
     padding: 20px;
 }
 
-.new-container-main table {
+    .new-container-main table {
         border-collapse: collapse;
         width: 100%;
     }
 
-.new-container-main table td {
+        .new-container-main table td {
             border: 1px solid black;
             padding: 10px;
         }
 
-.new-container-main table th {
+        .new-container-main table th {
             border: 1px solid black;
             padding: 10px;
             background-color: lightgray;
         }
 
-.new-container {
-    margin-top: 20px;
+/* Stylizace Index stránky */
+/* Tlaèítka */
+.btn,
+.btn-block {
+    width: 16rem;
+    padding: 0.4rem;
+    margin-bottom: 1.2rem;
+}
+
+.custom-button-edit,
+.custom-button-delete,
+.custom-button-details {
+    width: 10rem;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    margin: 3px;
+}
+
+/* Pojisteni tabulka */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .custom-table th,
+    .custom-table td {
+        padding: 5px;
+        text-align: left;
+        border: 1px solid #000000;
+    }
+
+        .custom-table th span,
+        .custom-table td span {
+            font-size: 14px;
+        }
+
+        .custom-table th:first-child,
+        .custom-table td:first-child {
+            padding-left: 10px;
+        }
+
+        .custom-table th:last-child,
+        .custom-table td:last-child {
+            padding-right: 10px;
+        }
+
+    .custom-table tbody tr {
+        height: 60px;
+    }
+
+        .custom-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+    .custom-table a {
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    .custom-table td:nth-child(1) {
+        width: 20%;
+    }
+
+    .custom-table td:nth-child(2) {
+        width: 15%;
+    }
+
+    .custom-table td:nth-child(3) {
+        width: 10%;
+    }
+
+    .custom-table td:nth-child(4) {
+        width: 15%;
+    }
+
+    .custom-table td:nth-child(5) {
+        width: 15%;
+    }
+
+    .custom-table td:nth-child(6) {
+        width: 15%;
+    }
+
+/* Paginace */
+.custom-table {
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+
+.record {
+    height: 60px; /* Nastavte výšku øádkù dle potøeby */
+}
+
+.pagination-container {
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
 }
 
-.new-container .form-group {
-        padding: 3px;
-    }
-/*Stylizace Index stranky*/
-.table-responsive {
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
+.pagination-button {
+    margin: 0 0.5rem;
 }
 
-    .table-responsive thead th {
-        font-weight: bold;
-        background-color: #f5f5f5;
-        border-bottom: 1px solid #ddd;
+/* Responsivita */
+@media (max-width: 768px) {
+    .custom-table {
+        font-size: 12px;
     }
 
-    .table-responsive tbody td {
-        border-bottom: 1px solid #ddd;
-    }
+        .custom-table th,
+        .custom-table td {
+            padding: 2px;
+        }
 
-.new-container.d-flex.align-items-center.justify-content-center {
-    margin-top: 20px;
-    text-align: center;
-}
+        .custom-table a {
+            font-size: 12px;
+        }
 
-.form-group.text-center.mt-1 a.btn-block {
-    display: block;
-    width: 100%;
+
