@@ -4,33 +4,21 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Pojistění</h1>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <div class="table-responsive table-full-width">
-                <table>
+            <div class="table-responsive table-full-width custom-table">
+                <table class="custom-table">
                     <thead>
                         <tr>
-                            <th>
-                                <span>Název pojištění</span>
-                            </th>
-                            <th>
-                                <span>Předmět pojištění</span>
-                            </th>
-                            <th>
-                                <span>Částka</span>
-                            </th>
-                            <th>
-                                <span>Datum zahájení</span>
-                            </th>
-                            <th>
-                                <span>Datum ukončení</span>
-                            </th>
-                            <th>
-                                <span>Pojištěný</span>
-                            </th>
+                            <th>Název pojištění</th>
+                            <th>Předmět pojištění</th>
+                            <th>Částka</th>
+                            <th>Datum zahájení</th>
+                            <th>Datum ukončení</th>
+                            <th>Pojištěný</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -38,28 +26,29 @@
                         @foreach (var item in Model)
                         {
                             <tr>
+                                <td>@Html.DisplayFor(modelItem => item.InsuranceName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.InsuranceSubject)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                                <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
+                                <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.InsuranceName)
+                                    <a class="custom-button-record" asp-action="Details" asp-route-id="@item.Id">
+                                        @Html.DisplayFor(modelItem => item.Insured.FirstName)
+                                        @Html.DisplayFor(modelItem => item.Insured.LastName)
+                                    </a>
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.InsuranceSubject)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Amount)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.StartDate)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.EndDate)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Insured.City)
-                                </td>
-                                <td>
-                                    <a class="custom-button-edit btn-info btn-md" asp-action="Edit" asp-route-id="@item.Id">Editovat</a>
-                                    <a class="custom-button-details btn-warning btn-md" asp-action="Details" asp-route-id="@item.Id">Detaily</a>
-                                    <a class="custom-button-delete btn-danger btn-md" asp-action="Delete" asp-route-id="@item.Id">Smazat</a>
+                                    <div class="d-flex">
+                                        <div class="mr-1">
+                                            <a class="custom-button-edit btn-info btn-md" asp-action="Edit" asp-route-id="@item.Id">Editovat</a>
+                                        </div>
+                                        <div class="mr-1">
+                                            <a class="custom-button-details btn-warning btn-md" asp-action="Details" asp-route-id="@item.Id">Detaily</a>
+                                        </div>
+                                        <div>
+                                            <a class="custom-button-delete btn-danger btn-md" asp-action="Delete" asp-route-id="@item.Id">Smazat</a>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         }
@@ -68,6 +57,12 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="pagination-container">
+    <button id="previousButton" class="pagination-button btn btn-primary">Předchozí</button>
+    <span id="currentPage" class="pagination-current">1</span>
+    <button id="nextButton" class="pagination-button btn btn-primary">Další</button>
 </div>
 
 <div class="container-fluid">
@@ -82,3 +77,59 @@
     </div>
 </div>
 
+<script>
+    var rows = document.querySelectorAll(".custom-table tbody tr");
+    var previousButton = document.getElementById("previousButton");
+    var nextButton = document.getElementById("nextButton");
+    var currentPage = 1;
+    var recordsPerPage = 5; // Počet záznamů na stránku
+    var totalPages = Math.ceil(rows.length / recordsPerPage);
+
+    // Přidání třídy "record" ke všem řádkům tabulky
+    rows.forEach(function (row) {
+        row.classList.add("record");
+    });
+
+    // Funkce pro zobrazení záznamů na aktuální stránce
+    function showRecords() {
+        // Skrytí všech řádků
+        rows.forEach(function (row) {
+            row.style.display = "none";
+        });
+
+        // Výpočet indexů počátečního a koncového záznamu na aktuální stránce
+        var startIndex = (currentPage - 1) * recordsPerPage;
+        var endIndex = Math.min(startIndex + recordsPerPage - 1, rows.length - 1);
+
+        // Zobrazení odpovídajících řádků na aktuální stránce
+        for (var i = startIndex; i <= endIndex; i++) {
+            rows[i].style.display = "table-row";
+        }
+
+        // Aktualizace stavu tlačítek navigace
+        previousButton.disabled = currentPage === 1;
+        nextButton.disabled = currentPage === totalPages;
+
+        // Posunutí scrollu na začátek tabulky
+        document.querySelector(".custom-table").scrollTop = 0;
+    }
+
+    // Přiřazení akce k tlačítku "Předchozí"
+    previousButton.addEventListener("click", function () {
+        if (currentPage > 1) {
+            currentPage--;
+            showRecords();
+        }
+    });
+
+    // Přiřazení akce k tlačítku "Další"
+    nextButton.addEventListener("click", function () {
+        if (currentPage < totalPages) {
+            currentPage++;
+            showRecords();
+        }
+    });
+
+    // Zobrazení záznamů na první stránce při načtení stránky
+    showRecords();
+</script>

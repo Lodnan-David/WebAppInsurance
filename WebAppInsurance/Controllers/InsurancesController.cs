@@ -83,7 +83,7 @@ namespace WebAppInsurance.Controllers
             {
                 return NotFound();
             }
-            ViewData["InsuredId"] = new SelectList(_context.Set<Insured>(), "Id", "City", insurance.InsuredId);
+            ViewData["InsuredId"] = new SelectList(_context.Set<Insured>(), "Id", "FirstName", insurance.InsuredId);
             return View(insurance);
         }
 

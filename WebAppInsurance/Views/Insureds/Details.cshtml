@@ -66,21 +66,36 @@
 </div>
 
 
-<table class="table-responsive">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.MyInsurances)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var p in Model.MyInsurances)
-        {
+<div class="table-responsive">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@Html.DisplayFor(model => p.InsuranceName)</td>
+                <th>Pojištění</th>
+                <th>Částka</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.MyInsurances)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => p.InsuranceName)</td>
+                    <td>@Html.DisplayFor(model => p.Amount)</td>
+                    <td>
+                        @Html.ActionLink("Smazat", "Delete", "Insurances", new { id = p.Id }, new { @class = "delete-link" })
+                        @Html.ActionLink("Editovat", "Edit", "Insurances", new { id = p.Id }, new { @class = "delete-link" })
+
+                    </td>
+
+                    
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
 
 
 

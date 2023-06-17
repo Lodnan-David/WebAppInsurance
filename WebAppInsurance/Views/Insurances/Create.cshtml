@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Vytvořit</h1>
 
-<h4>Insurance</h4>
+<h4>Pojištění</h4>
 <form asp-action="Create" class="form" id="createForm">
     <div class="new-container-main">
         <div class="row">
@@ -72,22 +72,18 @@
                             </div>
                         </td>
                     </tr>
-                    
                 </table>
             </div>
         </div>
-        <div class="new-container d-flex align-items-center justify-content-center">
-            <div class="form-group text-center mt-1">
-                <button type="submit" form="createForm" class="btn btn-primary btn-block">Vytvořit</button>
-                <button type="button" onclick="location.href='@Url.Action("Index")'" class="btn btn-secondary btn-block">Zpět</button>
-            </div>
-        </div>
-        
-
     </div>
 
+    <div class="new-container-btn d-flex align-items-center justify-content-center">
+        <div class="form-group mt-3">
+            <button  type="submit" form="createForm" class="btn btn-primary btn-block">Vytvořit</button>
+            <button type="button" onclick="location.href='@Url.Action("Index")'" class="btn btn-secondary">Zpět</button>
+        </div>
+    </div>
 </form>
-
     
 
 
