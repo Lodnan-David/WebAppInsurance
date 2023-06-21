@@ -35,7 +35,8 @@ a {
     background-color: lightskyblue;
     padding: 3px;
     text-align: center;
-    color:black;
+    color: black;
+    border-top: 2px solid blue;
 }
 .navbar {
     background-color: lightskyblue;
