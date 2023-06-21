@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAppInsurance.Data;
 
@@ -11,9 +12,11 @@ using WebAppInsurance.Data;
 namespace WebAppInsurance.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230621055917_Rolets_Update")]
+    partial class Rolets_Update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -232,14 +235,35 @@ namespace WebAppInsurance.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("AdditionalOption")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AdditionalOption1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AdditionalOption2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AdditionalOption3")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AdditionalOption4")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AdditionalOption5")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int?>("InsuranceId")
-                        .HasColumnType("int");
 
                     b.Property<string>("InsuranceName")
                         .IsRequired()
@@ -256,8 +280,6 @@ namespace WebAppInsurance.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("InsuranceId");
 
                     b.HasIndex("InsuredId");
 
@@ -370,20 +392,11 @@ namespace WebAppInsurance.Data.Migrations
 
             modelBuilder.Entity("WebAppInsurance.Models.Insurance", b =>
                 {
-                    b.HasOne("WebAppInsurance.Models.Insurance", null)
-                        .WithMany("MyInsureds")
-                        .HasForeignKey("InsuranceId");
-
                     b.HasOne("WebAppInsurance.Models.Insured", "Insured")
                         .WithMany("MyInsurances")
                         .HasForeignKey("InsuredId");
 
                     b.Navigation("Insured");
-                });
-
-            modelBuilder.Entity("WebAppInsurance.Models.Insurance", b =>
-                {
-                    b.Navigation("MyInsureds");
                 });
 
             modelBuilder.Entity("WebAppInsurance.Models.Insured", b =>

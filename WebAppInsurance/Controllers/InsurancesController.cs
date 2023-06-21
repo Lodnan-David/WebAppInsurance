@@ -29,7 +29,7 @@ namespace WebAppInsurance.Controllers
         // GET: Insurances/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Insurance == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -37,7 +37,7 @@ namespace WebAppInsurance.Controllers
             var insurance = await _context.Insurance
                 .Include(i => i.Insured)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            
+
             if (insurance == null)
             {
                 return NotFound();
@@ -49,7 +49,7 @@ namespace WebAppInsurance.Controllers
         // GET: Insurances/Create
         public IActionResult Create()
         {
-            ViewData["InsuredId"] = new SelectList(_context.Set<Insured>(), "Id", "LastName" );
+            ViewData["InsuredId"] = new SelectList(_context.Set<Insured>(), "Id", "FullName" );
             return View();
         }
 
@@ -83,7 +83,7 @@ namespace WebAppInsurance.Controllers
             {
                 return NotFound();
             }
-            ViewData["InsuredId"] = new SelectList(_context.Set<Insured>(), "Id", "FirstName", insurance.InsuredId);
+            ViewData["InsuredId"] = new SelectList(_context.Set<Insured>(), "Id", "FullName", insurance.InsuredId);
             return View(insurance);
         }
 

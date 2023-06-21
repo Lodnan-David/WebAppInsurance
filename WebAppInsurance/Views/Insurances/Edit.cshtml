@@ -1,10 +1,10 @@
 ﻿@model WebAppInsurance.Models.Insurance
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Upravit pojistku";
 }
 
-<h1>Vytvořit</h1>
+<h1>Upravit pojistku</h1>
 
 <h4>Pojištění</h4>
 <form asp-action="Edit" class="form" id="createForm">
@@ -19,11 +19,11 @@
                                 <label asp-for="InsuranceName" class="form-label visually-hidden"></label>
                                 <label for="insuranceName">Název pojištění</label>
                                 <select asp-for="InsuranceName" class="form-control" id="insuranceName">
-                                    <option value="Option1">Option 1</option>
-                                    <option value="Option2">Option 2</option>
-                                    <option value="Option3">Option 3</option>
-                                    <option value="Option4">Option 4</option>
-                                    <option value="Option5">Option 5</option>
+                                    <option value="Auta/Moto">Auta/Moto</option>
+                                    <option value="Nemovitosti">Nemovitosti</option>
+                                    <option value="Cestovní">Cestovní</option>
+                                    <option value="Úrazové">Úrazové</option>
+                                    <option value="Domácnosti">Domácnosti</option>
                                 </select>
                                 <span asp-validation-for="InsuranceName" class="text-danger"></span>
                             </div>
@@ -31,11 +31,11 @@
                                 <label asp-for="InsuranceSubject" class="form-label visually-hidden"></label>
                                 <label for="insuranceSubject">Předmět pojištění</label>
                                 <select asp-for="InsuranceSubject" class="form-control" id="insuranceSubject">
-                                    <option value="Option1">Option 1</option>
-                                    <option value="Option2">Option 2</option>
-                                    <option value="Option3">Option 3</option>
-                                    <option value="Option4">Option 4</option>
-                                    <option value="Option5">Option 5</option>
+                                    <option value="Automobil">Automobil</option>
+                                    <option value="Dům">Dům</option>
+                                    <option value="Cestování do zahraničí">Cestování do zahraničí</option>
+                                    <option value="Životní">Životní</option>
+                                    <option value="Vytopení sousedů">Vytopení sousedů</option>
                                 </select>
                                 <span asp-validation-for="InsuranceSubject" class="text-danger"></span>
                             </div>

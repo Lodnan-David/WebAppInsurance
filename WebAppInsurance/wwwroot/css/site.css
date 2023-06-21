@@ -23,24 +23,57 @@
 
 /* Stylizace Index stránky */
 /* Tlaèítka */
-.btn,
-.btn-block {
-    width: 16rem;
-    padding: 0.4rem;
-    margin-bottom: 1.2rem;
-}
 
+.custom-button-record{
+    font-size:1.4rem;
+    text-decoration:none;
+}
+    .custom-button-record:hover {
+        color: blue;
+        transition: box-shadow 0.3s ease-in-out;
+        border: 4px solid red;
+        border-radius:30px;
+        box-shadow: 10px 8px 5px blue);
+        padding:10px;
+    }
+tr {
+    font-size:1.3rem;
+}
+td {
+    font-size: 1.4rem;
+}
+.custom-button-create,
+.custom-button-details,
 .custom-button-edit,
 .custom-button-delete,
-.custom-button-details {
+.custom-button-back,
+.custom-button-delete-second,
+.btn{
     width: 10rem;
-    padding: 5px;
+    padding: 0.4rem;
     text-align: center;
     text-decoration: none;
     border-radius: 6px;
     margin: 3px;
+    margin-bottom: 1.2rem;
+    font-weight:bold;
+    
 }
-
+h1,h2,h3,h4 {
+    text-align:center;
+}
+h1 {
+    font-size: 5rem;
+    font-weight: bold;
+}
+h3 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+label {
+    font-weight:bold;
+    font-size:1.8rem;
+}
 /* Pojisteni tabulka */
 .custom-table {
     width: 100%;
@@ -78,7 +111,7 @@
         }
 
     .custom-table a {
-        font-size: 14px;
+        font-size: 1.5rem;
         text-decoration: none;
     }
 

@@ -1,12 +1,12 @@
 ﻿@model WebAppInsurance.Models.Insurance
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Vytvořit pojistku";
 }
 
-<h1>Vytvořit</h1>
+<h1>Vytvořit pojištění</h1>
 
-<h4>Pojištění</h4>
+
 <form asp-action="Create" class="form" id="createForm">
     <div class="new-container-main">
         <div class="row">
@@ -19,11 +19,11 @@
                                 <label asp-for="InsuranceName" class="form-label visually-hidden"></label>
                                 <label for="insuranceName">Název pojištění</label>
                                 <select asp-for="InsuranceName" class="form-control" id="insuranceName">
-                                    <option value="Option1">Option 1</option>
-                                    <option value="Option2">Option 2</option>
-                                    <option value="Option3">Option 3</option>
-                                    <option value="Option4">Option 4</option>
-                                    <option value="Option5">Option 5</option>
+                                    <option value="Auta/Moto">Auta/Moto</option>
+                                    <option value="Nemovitosti">Nemovitosti</option>
+                                    <option value="Cestovní">Cestovní</option>
+                                    <option value="Úrazové">Úrazové</option>
+                                    <option value="Domácnosti">Domácnosti</option>
                                 </select>
                                 <span asp-validation-for="InsuranceName" class="text-danger"></span>
                             </div>
@@ -31,11 +31,11 @@
                                 <label asp-for="InsuranceSubject" class="form-label visually-hidden"></label>
                                 <label for="insuranceSubject">Předmět pojištění</label>
                                 <select asp-for="InsuranceSubject" class="form-control" id="insuranceSubject">
-                                    <option value="Option1">Option 1</option>
-                                    <option value="Option2">Option 2</option>
-                                    <option value="Option3">Option 3</option>
-                                    <option value="Option4">Option 4</option>
-                                    <option value="Option5">Option 5</option>
+                                    <option value="Automobil">Automobil</option>
+                                    <option value="Dům">Dům</option>
+                                    <option value="Cestování do zahraničí">Cestování do zahraničí</option>
+                                    <option value="Životní">Životní</option>
+                                    <option value="Vytopení sousedů">Vytopení sousedů</option>
                                 </select>
                                 <span asp-validation-for="InsuranceSubject" class="text-danger"></span>
                             </div>
@@ -56,13 +56,13 @@
                             <div class="form-group">
                                 <label asp-for="StartDate" class="form-label visually-hidden"></label>
                                 <label for="startDate">Začátek pojištění</label>
-                                <input asp-for="StartDate" class="form-control" id="startDate" />
+                                <input asp-for="StartDate" class="form-control" id="startDate" asp-format="{0:yyyy-MM-dd}" />
                                 <span asp-validation-for="StartDate" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="EndDate" class="form-label visually-hidden"></label>
                                 <label for="endDate">Konec pojištění</label>
-                                <input asp-for="EndDate" class="form-control" id="endDate" />
+                                <input asp-for="EndDate" class="form-control" id="endDate" asp-format="{0:yyyy-MM-dd}" />
                                 <span asp-validation-for="EndDate" class="text-danger"></span>
                             </div>
                             <div class="form-group">
@@ -79,17 +79,15 @@
 
     <div class="new-container-btn d-flex align-items-center justify-content-center">
         <div class="form-group mt-3">
-            <button  type="submit" form="createForm" class="btn btn-primary btn-block">Vytvořit</button>
-            <button type="button" onclick="location.href='@Url.Action("Index")'" class="btn btn-secondary">Zpět</button>
+            <button type="submit" form="createForm" class="btn custom-button-create btn-primary ">Vytvořit</button>
+            <button type="button" onclick="location.href='@Url.Action("Index")'" class="btn custom-button-back btn-secondary">Zpět</button>
         </div>
     </div>
 </form>
-    
-
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    <partial name="_ValidationScriptsPartial" />
 }
+
+
 
