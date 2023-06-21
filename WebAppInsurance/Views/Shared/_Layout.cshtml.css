@@ -26,10 +26,6 @@ a {
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
-button.accept-policy {
-    font-size: 1rem;
-    line-height: inherit;
-}
 
 .footer {
     position: fixed;
@@ -39,6 +35,7 @@ button.accept-policy {
     background-color: lightskyblue;
     padding: 3px;
     text-align: center;
+    color:black;
 }
 .navbar {
     background-color: lightskyblue;
