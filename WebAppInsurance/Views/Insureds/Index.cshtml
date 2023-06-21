@@ -56,4 +56,12 @@
     </div>
 </div>
 
-<script src="~/js/Pagination.js"></script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="~/js/Pagination.js"></script>
+
+
+}

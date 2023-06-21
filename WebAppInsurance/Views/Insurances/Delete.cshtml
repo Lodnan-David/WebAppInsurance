@@ -5,57 +5,72 @@
 }
 
 <div class="container">
-    <h1>Smazat</h1>
+    <div class="text-center">
+        <h1>Smazat</h1>
+        <h3>Jste si jistí, že si přejete vymazat záznam?</h3>
+    </div>
 
-    <h3>Jste si jistí, že si přejete vymazat záznam?</h3>
-    <div>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayName("Název pojištění")
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.InsuranceName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayName("Předmět pojištění")
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.InsuranceSubject)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayName("Částka")
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Amount)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayName("Datum počátku")
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.StartDate)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayName("Datum konce")
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.EndDate)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayName("Pojištěnec")
-            </dt>
-            <dd class="col-sm-10">
-                <a class="custom-button-record" asp-controller="Insureds" asp-action="Details" asp-route-id="@Model.Insured.Id">
-                    @Model.Insured.FullName
-                </a>
-            </dd>
-        </dl>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="new-container-main">
+                <h4>Informace o pojistce</h4>
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Název pojištění:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.InsuranceName)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Předmět pojištění:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.InsuranceSubject)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Částka:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Amount)
+                    </dd>
+                </dl>
+            </div>
+        </div>
 
+        <div class="col-md-6">
+            <div class="new-container-main">
+                <h4>Datum zahájení</h4>
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Datum počátku:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.StartDate)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Datum konce:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.EndDate)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Pojištěnec:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        <a class="custom-button-record" asp-controller="Insureds" asp-action="Details" asp-route-id="@Model.Insured.Id">
+                            @Model.Insured.FullName
+                        </a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
         <form asp-action="Delete">
             <input type="hidden" asp-for="Id" />
-            <input type="submit" value="Smazat" class="btn btn-danger custom-button-delete-second" />
+            <input type="submit" value="Smazat" class="btn btn-danger custom-button-delete-second" /> 
             <a class="btn btn-secondary custom-button-back" asp-action="Index">Zpět na seznam</a>
         </form>
-        
     </div>
 </div>

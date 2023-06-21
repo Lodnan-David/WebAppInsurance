@@ -1,69 +1,88 @@
 ﻿@model WebAppInsurance.Models.Insured
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Smazat";
 }
 
-<h1>Delete</h1>
+<div class="container">
+    <div class="text-center">
+        <h1>Smazat</h1>
+        <h3>Jste si jistí, že si přejete vymazat záznam?</h3>
+    </div>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Insured</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Street)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Street)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HouseNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HouseNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.City)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ZIPCode)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ZIPCode)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="new-container-main">
+                <h4>Pojištěnec</h4>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Jméno:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.FirstName)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Příjmení:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Email:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Telefon:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Phone)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="new-container-main">
+                <h4>Adresa</h4>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Ulice:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Street)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Číslo popisné:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.HouseNumber)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Město:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.City)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("PSČ:")
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.ZIPCode)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Smazat" class="btn btn-danger" /> |
+            <a class="btn btn-secondary" asp-action="Index">Zpět na seznam</a>
+        </form>
+    </div>
 </div>
