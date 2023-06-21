@@ -74,15 +74,7 @@
         }
 
 /* Zlepšení footeru */
-.footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 2rem;
-    background-color: #f8f9fa;
-    border-top: 0.4rem solid #dee2e6;
-    color: #6c757d;
-}
+
 
 /* Responsivita */
 @media (max-width: 768px) {

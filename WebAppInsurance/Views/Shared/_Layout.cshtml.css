@@ -26,7 +26,6 @@ a {
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
-
 .footer {
     position: fixed;
     left: 0;
@@ -37,6 +36,14 @@ a {
     text-align: center;
     color: black;
     border-top: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-height: 750px) {
+    .footer {
+        display: none;
+    }
 }
 .navbar {
     background-color: lightskyblue;
