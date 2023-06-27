@@ -31,6 +31,8 @@
                                 <td>@Html.DisplayFor(modelItem => item.Amount) Kč</td>
                                 <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
                                 <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+                                <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+
                                 <td>
                                     <a class="custom-button-record" asp-action="Details" asp-route-id="@item.Id">
                                         @Html.DisplayFor(modelItem => item.Insured.FullName

@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IEnumerable<IdentityRole>
+
+@{
+    ViewData["Title"] = "Role v Aplikaci";
+}
+
+<h1>Ukaž role</h1>
+<p>
+    <a asp-action="Create" class="custom-button-create">Vytvoř roli</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>@Html.DisplayNameFor(model => model.Id)</th>*@
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    @*@Html.DisplayFor(modelitem=>item.Id)*@
+                    @Html.DisplayFor(modelitem=>item.Name)
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

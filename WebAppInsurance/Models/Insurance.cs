@@ -30,6 +30,7 @@ namespace WebAppInsurance.Models
 
         public Insured? Insured { get; set; }
         public virtual ICollection<Insurance>? MyInsureds { get; set; }
+        
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

@@ -12,5 +12,6 @@ namespace WebAppInsurance.Data
         }
         public DbSet<WebAppInsurance.Models.Insurance> Insurance { get; set; } = default!;
         public DbSet<WebAppInsurance.Models.Insured> Insured { get; set; } = default!;
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; } = default!;
     }
 }

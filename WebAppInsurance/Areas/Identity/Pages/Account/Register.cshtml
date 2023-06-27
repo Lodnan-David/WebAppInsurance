@@ -1,0 +1,84 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Registrovat uživatele";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <table class="table">
+                    <tr>
+                        <td>Jméno</td>
+                        <td>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.FirstName" class="form-control" autocomplete="FirstName" aria-required="true" />
+                                <label asp-for="Input.FirstName" class="form-label-placeholder">Jméno</label>
+                                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Přijmení</td>
+                        <td>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.LastName" class="form-control" autocomplete="LastName" aria-required="true" />
+                                <label asp-for="Input.LastName" class="form-label-placeholder">Přijmení</label>
+                                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.Email" class="form-control" autocomplete="Email" aria-required="true" />
+                                <label asp-for="Input.Email" class="form-label-placeholder">Email</label>
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Heslo</td>
+                        <td>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                                <label asp-for="Input.Password" class="form-label-placeholder">Heslo</label>
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Potvrzení hesla</td>
+                        <td>
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                                <label asp-for="Input.ConfirmPassword" class="form-label-placeholder">Potvrď heslo</label>
+                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Role</td>
+                        <td>
+                            <div class="form-floating mb-3">
+                                <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-control" aria-required="true">
+                                    <option disabled selected>Vyber roli</option>
+                                </select>
+                                <span asp-validation-for="Input.Role" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Registrovat</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    }

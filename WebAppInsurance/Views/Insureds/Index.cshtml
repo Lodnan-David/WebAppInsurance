@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<WebAppInsurance.Models.Insured>
 
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -26,6 +27,7 @@
                                     <a class="custom-button-record" asp-action="Details" asp-route-id="@item.Id">
                                         @Html.DisplayFor(modelItem => item.FirstName)
                                         @Html.DisplayFor(modelItem => item.LastName)
+                                        
                                     </a>
                                 </td>
                                 <td>@Html.DisplayFor(modelItem => item.Street), @Html.DisplayFor(modelItem => item.HouseNumber), @Html.DisplayFor(modelItem => item.City), @Html.DisplayFor(modelItem => item.ZIPCode)</td>
